@@ -19,7 +19,11 @@ use Symfony\Component\Console\Application;
 
 require 'vendor/autoload.php';
 
-$app = new Application('Constructice Core Tool', "1.0");
+if ( defined( 'WP_CLI' ) && WP_CLI ) {
+    require_once dirname( __FILE__ ) . '/cli/cli.php';
+}
+
+$app = new Application('Constructive Core Tool', "1.0");
 
 $app->add(new ComponentCommand());
 
